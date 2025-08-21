@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Online</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Fake store</div>
+        <div class="buscar">
+            <input type="text" id="buscar" placeholder="Buscar productos..."><i class='bx bx-search'></i>
+        </div>
+        <div class="carrito-carta">
+            <button id="ver-carrito">🛒 Carrito (<span id="carrito-cantidad">0</span>)</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="contenedor-ordenar">
+            <label for="ordenar">Ordenar por:</label>
+            <select id="ordenar">
+                <option value="default">Por defecto</option>
+                <option value="precio-asce">Precio: Menor a Mayor</option>
+                <option value="precio-desc">Precio: Mayor a Menor</option>
+                <option value="titulo-asc">Título: A-Z</option>
+                <option value="titulo-desc">Título: Z-A</option>
+            </select>
+        </section>
+
+        <section class="contenedor-categoria">
+            <label for="categoria">Categoria:</label>
+            <select  id="categoria">
+                <option value="all" >Todos</option>
+                <option value="men's clothing">men's clothing</option>
+                <option value="women's clothing">women's clothing</option>
+                <option value="jewelery">jewelery</option>
+                <option value="electronics">electronics</option>
+            </select>
+        </section>
+        <section id="productos" class="productos-grid"></section>
+    </main>
+
+    <div id="carrito-modal" class="carrito-modal ">
+        <div class="modal-content">
+            <span class="cerrar" title="salir"><i class='bx bxs-exit'></i></span>
+            <h3>Carrito de Compras</h3>
+            <div id="carrito-contenedor"></div>
+            <button id="vaciar-carrito" class="btn">Vaciar Carrito</button>
+            <button>Comprar</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Tienda Online. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
