@@ -35,7 +35,8 @@ function mostrarProductos(lista) {
         card.innerHTML = `
             <img src="${p.image}" alt="${p.title}">
             <h3>${p.title}</h3>
-            <p>Precio: $${p.price}</p>
+            <p><b>Categoria: </b>${p.category}</p>
+            <p><b>Precio: </b>$${p.price}</p>
             <button data-id="${p.id}">Agregar al carrito</button>
         `;
         //Aqui esta agarrando el boton y va a hacer un evento en donde cuando le de click en el boton va a hacer la función de agregarAlCarrito
@@ -71,9 +72,11 @@ function agregarAlCarrito(producto) {
 //Esta funcion lo que hace es mostrar el carrito
 function mostrarCarrito() {
     carritoContenedor.innerHTML = "";
+    let totalPrecio = 0;
     // Aquí lo que hace es que si el carrito no hay ningun producto, va a colocar el carrito está vacío
     if (carrito.length === 0) {
-        carritoContenedor.innerHTML = "<p>El carrito está vacío.</p>";
+        carritoContenedor.innerHTML = "<p>El carrito está vacío.</p>"
+        document.getElementById("total").textContent = "Total: $0.00";
         return;
     }
     carrito.forEach(p => {
@@ -83,10 +86,14 @@ function mostrarCarrito() {
             <p>${p.title} x${p.cantidad} - $${(p.price * p.cantidad).toFixed(2)}</p>
             <button class="eliminar" data-id="${p.id}">Eliminar</button><br><br>
         `;
+
+        totalPrecio += p.price * p.cantidad;  
+
         // Aquí lo que está haciendo es que cuando le de click en el botón de eliminar se elimine el producto
         div.querySelector(".eliminar").addEventListener("click", () => eliminarDelCarrito(p.id));
         carritoContenedor.appendChild(div);
     });
+    document.getElementById("total").textContent = `Total: $${totalPrecio.toFixed(2)}`;
 }
 
 // Esta función lo que hace es eliminar producto del carrito

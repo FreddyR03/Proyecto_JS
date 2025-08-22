@@ -55,8 +55,11 @@ document.addEventListener("DOMContentLoaded", () => {
               title: 'Usuario registrado',
               text: `🎉 Registro exitoso: ${email}`,
               confirmButtonText: "OK"
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location.href = "../index.html";
+              }
             });
-            Swal.fire.style.display = "flex"
             btn.textContent = "CONTINUAR";
             btn.style.background = "#444";
           }, 1500);

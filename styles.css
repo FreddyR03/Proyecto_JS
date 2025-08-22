@@ -94,15 +94,7 @@ header .buscar input {
   z-index: 0;
 }
 
-.buscar i{
-  position: absolute;
-  right: 280px;
-  z-index: 10;
-  top: 20px;
-  font-size: 1.5rem;
-  color: #333;
-  
-}
+
 #buscar{
   font-size: 1.5rem;
   color: #333;
@@ -263,14 +255,6 @@ header .buscar input {
   z-index: 0;
 }
 
-.buscar i{
-  position: absolute;
-  right: 85px;
-  z-index: 10;
-  top: 45px;
-  font-size: 1.5rem;
-  color: #333;
-}
 
   .productos-grid {
     display: grid;
@@ -298,25 +282,52 @@ header .carrito-carta button {
   top: -73px;
   width: 120px;
 }
+
+ .pedido{ 
+  border-radius: 5px;
+  background-color: #2ecf64;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  width: 40%;
+  border-radius: 5px;
+  margin-left: 46%;
+  position: relative;
+  top: -35px;
+  cursor: pointer;
+ }
 }
 
-/* Tablets */
-@media (min-width: 576px) and (max-width: 991px) {
-  .producto {
-    width: 48%; /* dos por fila */
-  }
+@media (min-width: 769px) and (max-width: 960px) {
+
+  header .logo {
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-left: -15px; 
+}
+header .buscar input {
+  position: relative;
+  padding: 1px;
+  font-size: 1em;
+  width: 505px;
+  margin-left: -105px;
+  z-index: 0;
 }
 
-/* Laptops */
-@media (min-width: 992px) and (max-width: 1199px) {
-  .producto {
-    width: 30%; /* tres por fila */
-  }
-}
 
-/* Escritorios grandes */
-@media (min-width: 1200px) {
-  .producto {
-    width: 22%; /* cuatro o más por fila */
-  }
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 25px;
+    margin: 0;
+}
+header .carrito-carta button {
+  background-color: #ff6f61;
+  color: white;
+  border: none;
+  width: 150px;
+  margin-left: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
 }
