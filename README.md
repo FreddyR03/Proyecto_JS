@@ -37,7 +37,7 @@ El proyecto consiste en una aplicación web de **tienda virtual** desarrollada c
 ![imagen](./imagenes/image3.png)
 
 ---
-## 🛠️ Cómo usar
+## 🛠️ Cómo ejecutar
 1. **Clonar el repositorio**  
    Abre la terminal y ejecuta:  
    ```bash
@@ -47,3 +47,29 @@ El proyecto consiste en una aplicación web de **tienda virtual** desarrollada c
 2. Abre el proyecto
    - Opción 1: En VS Code con Live Server → clic derecho en index.html > Open with Live Server.  
    - Opción 2: Abre index.html directamente en el navegador.
+
+## 📁 Estructura del Proyecto
+
+```plaintext
+Proyecto_JS/
+├── index.html
+├── style.css
+├── script.js
+├── README.md
+│
+├── analisis/
+│   └── analisis.md
+│
+├── imagenes/
+│   ├── imagen.png
+│   ├── imagen2.png
+│   └── imagen3.png
+│
+├── login/
+│   ├── login.html
+│   ├── login.css
+│   └── login.js
+│
+└── maquetación/
+    └── fake store.pdf
+```

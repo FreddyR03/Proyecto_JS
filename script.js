@@ -12,7 +12,7 @@ const cerrarModal = document.querySelector(".cerrar");
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 let listaProductos = [];
 
-//Esta función lo que hice es que obtuve el API
+//Esta función lo que hice es  consultar la API con fetch y convertir la respuesta en JSON  y guardar los productos en listaProductos. Luego llama a mostrarProductos para renderizarlos.
 async function obtenerProductos() {
     try {
         const res = await fetch(API_URL);
@@ -24,14 +24,14 @@ async function obtenerProductos() {
     }
 }
 
-//Esta función lo que hace es mostrar los productos del API
+//Esta función lo que hace es mostrar los productos del API y agregarlas al DOM con appendChild.
 function mostrarProductos(lista) {
     //Los productos lo convierte en vacio si hay algo
     productos.innerHTML = "";
     lista.forEach(p => {
         const card = document.createElement("div");
         card.classList.add("card");
-        //Aquí esta llamando a los productos del API aunque solamente está llamando la imagen, titulo, precio y la id del producto donde esa id se va a colocar en el botón para que se guarde la id en el carrito
+        //Aquí esta llamando a los productos del API aunque solamente está llamando la imagen, titulo, precio y la id se usa para identificar qué producto se agrega al carrito.
         card.innerHTML = `
             <img src="${p.image}" alt="${p.title}">
             <h3>${p.title}</h3>
@@ -39,7 +39,7 @@ function mostrarProductos(lista) {
             <p><b>Precio: </b>$${p.price}</p>
             <button data-id="${p.id}">Agregar al carrito</button>
         `;
-        //Aqui esta agarrando el boton y va a hacer un evento en donde cuando le de click en el boton va a hacer la función de agregarAlCarrito
+        //Aqui esta agarrando el boton y va a hacer un evento en donde cuando le de click en el boton va a hacer la función de agregarAlCarrito, además de agregarlo al carrito, muestra un mensaje de confirmación con SweetAlert2.
        card.querySelector("button").addEventListener("click", () => {
             agregarAlCarrito(p);
             Swal.fire({
@@ -49,7 +49,7 @@ function mostrarProductos(lista) {
             confirmButtonText: "OK"
             });
         });
-        //Aquí lo que está haciendo es en el div padre va a agregar todo lo que esta haciendo en el innerHTML a ese  div, ejemplo: <div><img><div>
+        //Aquí lo que está haciendo es agregar la tarjeta completa (card) al contenedor principal (productos), con todos los elementos que ya se habían generado dentro del innerHTML.
         productos.appendChild(card);
     });
 }
@@ -69,7 +69,7 @@ function agregarAlCarrito(producto) {
     actualizarCarrito();
 }
 
-//Esta funcion lo que hace es mostrar el carrito
+//Esta funcion lo que hace es mostrar el carrito,  también calcula el total y lo actualiza en el DOM.
 function mostrarCarrito() {
     carritoContenedor.innerHTML = "";
     let totalPrecio = 0;
@@ -89,7 +89,7 @@ function mostrarCarrito() {
 
         totalPrecio += p.price * p.cantidad;  
 
-        // Aquí lo que está haciendo es que cuando le de click en el botón de eliminar se elimine el producto
+        // Aquí lo que está haciendo es que cuando le de click en el botón de eliminar se elimine el producto específico usando su id.
         div.querySelector(".eliminar").addEventListener("click", () => eliminarDelCarrito(p.id));
         carritoContenedor.appendChild(div);
     });
@@ -103,13 +103,14 @@ function eliminarDelCarrito(id) {
     actualizarCarrito();
 }
 
-//Aquí hace un evento el cual cuando le de click al boton de vaciar carrito, va a eliminar todos los productos  y va a dejar vacio el contenedor
+//Aquí hace un evento el cual cuando le de click al boton de vaciar carrito, va a eliminar todos los productos  y va a dejar vacio el contenedor, además reinicia el contador de carrito a 0 y lo guarda vacío en localStorage.
 vaciarCarritoBtn.addEventListener("click", () => {
     carrito = [];
     actualizarCarrito();
 });
 
 //Esta función lo que va a hacer es actualizar  el carrito
+//guarda el carrito en localStorage, actualiza el contador de productos y vuelve a renderizarlo.
 function actualizarCarrito() {
     //Aqui lo que hace es convertir los productos del archivo a JSON y lo guarda en el localStorage
     localStorage.setItem("carrito", JSON.stringify(carrito));
@@ -147,7 +148,7 @@ ordenar.addEventListener("change", () => {
     mostrarProductos(productosOrdenados);
 });
 
-//Aqui lo que estoy haciendo es buscar los productos por su categoria
+//Aqui lo que estoy haciendo es buscar los productos por su categoria, aplica un filtro según la categoría seleccionada en el <select>
 categoria.addEventListener("change", ()=>{
     const criterioCategoria= categoria.value;
     let productosCategoria = [...listaProductos];
@@ -166,25 +167,25 @@ categoria.addEventListener("change", ()=>{
     mostrarProductos(productosCategoria)
 })
 
-//Aqui lo que hace es que con un evento cuando le de click en el carrito le va a dar un estilo que va a ser display flex y va a mostrar el carrito
+//Aqui lo que hace es que con un evento cuando le de click en el botón con id "ver-carrito", abrimos el modal del carrit cambiando su display a "flex" (para hacerlo visible) y luego renderizamos su contenido actual llamando a mostrarCarrito().
 document.getElementById("ver-carrito").addEventListener("click", () => {
     carritoModal.style.display = "flex";
     mostrarCarrito();
 });
 
-//Aqui lo que hace es que cuando le de click en el icono de salir el contenedor de todos los productos que tiene el carrito se va a quitar
+//Aqui lo que hace es que cuando le de click en el icono de salir el contenedor de todos los productos que tiene el carrito se va a cerrar el modal.
 cerrarModal.addEventListener("click", () => {
     carritoModal.style.display = "none";
 });
 
-//Aquí lo que hace es que cuando le de click por fuera del contenedor del carrito se va a quitar
+//Aquí lo que hace es que cuando le de click por fuera del contenedor del carrito se va a cerrar el modal.
 window.addEventListener("click", (e) => {
     if (e.target === carritoModal) {
         carritoModal.style.display = "none";
     }
 });
 
-// Aquí llamamos la función para que se muestre los productos del API
+// Aquí llamamos la función para que se muestre los productos del API apenas cargue la página
 
     obtenerProductos();
     actualizarCarrito();
