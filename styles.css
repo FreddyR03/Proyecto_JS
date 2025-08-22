@@ -3,6 +3,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  background: linear-gradient(to bottom, #a6a6a6, #4c4c4c);
   box-sizing: border-box;
 }
 
@@ -12,12 +13,77 @@ header {
   align-items: center;
   background-color: #333;
   color: white;
-  padding: 10px 20px;
+  padding: 26px 20px;
 }
 
 header .logo {
-  font-size: 1.5em;
+  font-size: 2.9em;
   font-weight: bold;
+  margin-left: 50PX;
+}
+
+
+#ordenar{
+
+  background-color: #ffffff;
+  color: rgb(12, 1, 1);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+ }
+  #ordenar:hover{
+      background-color: #ececec;
+    }
+ 
+ #categoria{
+   border-radius: 5px;
+   background-color: #ffffff;
+   color: rgb(0, 0, 0);
+   border: none;
+   padding: 10px 15px;
+   border-radius: 5px;
+   cursor: pointer;
+  }
+
+  #categoria:hover{
+    background-color: #d8d5d5;
+  }
+
+  a{
+    text-decoration: none;
+    color: white;
+  }
+
+ .pedido{
+  border-radius: 5px;
+  background-color: #2ecf64;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  width: 25%;
+  border-radius: 5px;
+  margin-left: 46%;
+  cursor: pointer;
+ }
+
+ .pedido:hover{
+  background-color: #28b85a;
+ }
+
+.eliminar{
+  border-radius: 5px;
+  background-color: #979797;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  
+}
+
+.eliminar:hover{
+  background-color: #7f7f7f;
 }
 
 header .buscar input {
@@ -35,13 +101,21 @@ header .buscar input {
   top: 20px;
   font-size: 1.5rem;
   color: #333;
+  
 }
+#buscar{
+  font-size: 1.5rem;
+  color: #333;
+  border-radius: 5px;
+}
+
 
 header .carrito-carta button {
   background-color: #ff6f61;
+  padding: 10px 24px;
   color: white;
   border: none;
-  padding: 10px 15px;
+  width: 200px;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -61,7 +135,7 @@ main {
 .contenedor-categoria{
   position: relative;
   left: 300px;
-  top: -38px;
+  top: -53px;
 }
 .productos-grid {
     display: grid;
@@ -75,7 +149,8 @@ main {
 }
 
 .card {
-  border: 1px solid #ddd;
+  border: 1px solid #f7f2f2;
+  background-color: white;
   border-radius: 5px;
   padding: 15px;
   text-align: center;
@@ -108,6 +183,9 @@ main {
 
 .card button:hover {
   background-color: #218838;
+}
+#compri:hover{
+  background-color: #27ae60;
 }
 
 /* Modal */
@@ -150,6 +228,7 @@ main {
 .modal-content .btn {
   background-color: #dc3545;
   color: white;
+  padding: 80px 10px;
   border: none;
   padding: 10px 15px;
   border-radius: 5px;
@@ -165,4 +244,79 @@ footer {
   padding: 10px;
   background-color: #333;
   color: white;
+}
+
+/* Celulares */
+@media (max-width: 575px) {
+
+header .logo {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-left: -15px; 
+}
+header .buscar input {
+  position: relative;
+  padding: 1px;
+  font-size: 1em;
+  width: 225px;
+  margin-left: 10px;
+  z-index: 0;
+}
+
+.buscar i{
+  position: absolute;
+  right: 85px;
+  z-index: 10;
+  top: 45px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+  .productos-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); 
+    gap: 25px;
+    margin: 0;
+}
+header .carrito-carta button {
+  background-color: #ff6f61;
+  padding: 8px 0;
+  color: white;
+  border: none;
+  width: 70px;
+  margin-left: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.contenedor-ordenar {
+  margin-bottom: 20px;
+  width: 120px;
+}
+.contenedor-categoria{
+  position: relative;
+  left: 200px;
+  top: -73px;
+  width: 120px;
+}
+}
+
+/* Tablets */
+@media (min-width: 576px) and (max-width: 991px) {
+  .producto {
+    width: 48%; /* dos por fila */
+  }
+}
+
+/* Laptops */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .producto {
+    width: 30%; /* tres por fila */
+  }
+}
+
+/* Escritorios grandes */
+@media (min-width: 1200px) {
+  .producto {
+    width: 22%; /* cuatro o más por fila */
+  }
 }

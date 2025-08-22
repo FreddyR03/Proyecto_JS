@@ -115,7 +115,7 @@ function actualizarCarrito() {
     mostrarCarrito();
 }
 
-//Aquí lo que hace es  que en buscar hace un evento en cual cuando uno escriba va a buscar el produucto que coincida con lo que está escribiendo
+//Aquí lo que hace es  que en buscar hace un evento en cual cuando uno escriba va a buscar el producto que coincida con lo que está escribiendo
 buscar.addEventListener("input", () => {
     const termino = buscar.value.toLowerCase();
     const filtrados = listaProductos.filter(p =>
@@ -159,7 +159,7 @@ categoria.addEventListener("change", ()=>{
     mostrarProductos(productosCategoria)
 })
 
-//Aqui lo que hace es que con un evento cuando le de click en el carrito le va a dar un stylo que va a ser display flex y va a mostrar el carrito
+//Aqui lo que hace es que con un evento cuando le de click en el carrito le va a dar un estilo que va a ser display flex y va a mostrar el carrito
 document.getElementById("ver-carrito").addEventListener("click", () => {
     carritoModal.style.display = "flex";
     mostrarCarrito();
@@ -181,3 +181,6 @@ window.addEventListener("click", (e) => {
 
     obtenerProductos();
     actualizarCarrito();
+
+
+    
